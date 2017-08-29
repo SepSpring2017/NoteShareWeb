@@ -23,4 +23,4 @@ before_script:
 script: ng build --prod --base-href "/NoteShareWeb/"
 
 after_success:
-  - ngh
+  - ngh --no-silent
