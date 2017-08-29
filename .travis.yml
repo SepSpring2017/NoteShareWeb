@@ -18,13 +18,9 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 before_script:
-  - npm i -g @angular/cli
-  - npm i -g karma
   - npm i -g angular-cli-ghpages
-  - npm install
-  - ng build --prod --base-href "/NoteShareWeb/"
 
-script: karma start config/karma.conf.js --single-run
+script: ng build --prod --base-href "/NoteShareWeb/"
 
 after_success:
   - ngh
