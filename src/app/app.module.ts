@@ -10,8 +10,8 @@ import { SearchComponent } from './search/search.component';
 import { NoteComponent } from './note/note.component';
 import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {routes } from './app.routes';
-import { SigninComponent } from './signin/signin.component';
+import { routes } from './app.routes';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { SigninComponent } from './signin/signin.component';
     NoteComponent,
     AboutComponent,
     MainComponent,
-    SigninComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

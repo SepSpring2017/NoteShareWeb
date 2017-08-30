@@ -8,7 +8,7 @@ import { AboutComponent } from './about/about.component';
 import { NoteComponent } from './note/note.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
-import { SigninComponent } from './signin/signin.component';
+import { RegisterComponent } from './register/register.component';
 
 export const router: Routes = [
     { path: '', component: MainComponent, pathMatch: 'full'},
@@ -18,7 +18,7 @@ export const router: Routes = [
     { path: 'profile', component: ProfileComponent },
     { path: 'search', component: SearchComponent },
     { path: 'note', component: NoteComponent },
-    { path: 'signin', component: SigninComponent }
+    { path: 'register', component: RegisterComponent }
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);
