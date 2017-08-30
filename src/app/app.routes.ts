@@ -11,7 +11,7 @@ import { SearchComponent } from './search/search.component';
 import { SigninComponent } from './signin/signin.component';
 
 export const router: Routes = [
-    { path: '', redirectTo: 'main', pathMatch: 'full'},
+    { path: '', component: MainComponent, pathMatch: 'full'},
     { path: 'main', component: MainComponent },
     { path: 'login', component: LoginComponent },
     { path: 'about', component: AboutComponent },
