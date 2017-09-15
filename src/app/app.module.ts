@@ -19,6 +19,7 @@ import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthenticationService } from './_services/authentication.service';
 import { AuthGuard } from './_services/auth.guard';
+import { UserService } from './_services/user.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AuthGuard } from './_services/auth.guard';
     AuthenticationService,
     AuthGuard,
     BaseRequestOptions,
-    AppConfig
+    AppConfig,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
