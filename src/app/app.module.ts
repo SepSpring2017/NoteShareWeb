@@ -1,7 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BaseRequestOptions } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { AppConfig } from './app.config';
+import { routes } from './app.routes';
+
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
@@ -9,9 +16,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { SearchComponent } from './search/search.component';
 import { NoteComponent } from './note/note.component';
 import { AboutComponent } from './about/about.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { routes } from './app.routes';
 import { RegisterComponent } from './register/register.component';
+import { AuthenticationService } from './_services/authentication.service';
+import { AuthGuard } from './_services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -28,9 +35,16 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    routes
+    routes,
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    AuthGuard,
+    BaseRequestOptions,
+    AppConfig
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

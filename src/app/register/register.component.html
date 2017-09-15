@@ -1,6 +1,6 @@
 <div class="container spacer">
   <div class="row">
-    <form class="col s12 offset-m2 m8">
+    <form class="col s12 offset-m2 m8" #f="ngForm">
       <div class="row">
         <div class="input-field col s4 m8 offset-s4 offset-m2">
           <input id="number" type="email" class="validate">
@@ -15,7 +15,7 @@
       </div>
       <div class="row">
         <div class="col s4 m8 offset-s4 offset-m2">
-          <a routerLink="/profile" class="waves-effect waves-light btn">Register</a>
+          <button [disabled]="!f.form.valid" routerLink="/profile" class="waves-effect waves-light btn">Register</button>
         </div>
       </div>
     </form>
