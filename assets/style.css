@@ -1,15 +1,4 @@
 /* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
-
-nav ul a,
-nav .brand-logo {
-  color: #444;
-}
 
 p {
   line-height: 2rem;
@@ -54,4 +43,22 @@ p {
 
 footer.page-footer {
   margin: 0;
+}
+
+.spacer {
+  padding-top: 20px;
+}
+
+.double-spacer {
+  padding-top: 40px;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
