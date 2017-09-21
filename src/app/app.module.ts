@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BaseRequestOptions } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { AppConfig } from './app.config';
 import { routes } from './app.routes';
 
 import { HeaderComponent } from './header/header.component';
@@ -44,7 +43,6 @@ import { UserService } from './_services/user.service';
     AuthenticationService,
     AuthGuard,
     BaseRequestOptions,
-    AppConfig,
     UserService
   ],
   bootstrap: [AppComponent]
