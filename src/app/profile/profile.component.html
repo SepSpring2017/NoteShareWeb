@@ -17,40 +17,18 @@
   </div>
 </div>
 
-<h2>Your Subjects</h2>
-
 <div class="row">
-  <div class="col s10">
-<ul class="collection">
-  <li class="collection-item avatar">
-    <i class="material-icons circle">note</i>
-    <span class="title">Subject 1</span>
-    <p>First Line <br> Second Line
-    </p>
-    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-  </li>
-  <li class="collection-item avatar">
-    <i class="material-icons circle">note</i>
-    <span class="title">Subject 2</span>
-    <p>First Line <br> Second Line
-    </p>
-    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-  </li>
-  <li class="collection-item avatar">
-    <i class="material-icons circle green">note</i>
-    <span class="title">Subject 3</span>
-    <p>First Line <br> Second Line
-    </p>
-    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-  </li>
-  <li class="collection-item avatar">
-    <i class="material-icons circle red">note</i>
-    <span class="title">Subject 4</span>
-    <p>First Line <br> Second Line
-    </p>
-    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-  </li>
-</ul>
+  <div class="col s12 m8 offset-m2">
+    <h2>Your Subjects</h2>
+    <ul *ngIf="user && user.subjects" class="collection">
+      <li *ngFor="let subject of user.subjects" class="collection-item avatar">
+        <i class="material-icons circle">note</i>
+        <span class="title">{{ subject.subjectId }} | {{ subject.name }}</span>
+        <p>First Line <br> Second Line
+        </p>
+        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+      </li>
+    </ul>
   </div>
 </div>
 
