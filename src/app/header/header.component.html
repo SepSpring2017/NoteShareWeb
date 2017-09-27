@@ -4,21 +4,21 @@
     <div class="nav-wrapper container">
       <a id="logo-container" href="/" class="brand-logo">NoteShare</a>
       <ul class="right hide-on-med-and-down">
-        <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="/register">Register</a></li>
-        <li><a routerLink="/search">Search</a></li>
-        <li><a routerLink="/profile">Profile</a></li>
-        <li><a routerLink="/about">About</a></li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Home</a></li>
+        <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+        <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
+        <li routerLinkActive="active"><a routerLink="/search">Search</a></li>
+        <li routerLinkActive="active"><a routerLink="/profile">Profile</a></li>
+        <li routerLinkActive="active"><a routerLink="/about">About</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav" style="transform: translateX(-100%);">
-        <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="/register">Register</a></li>
-        <li><a routerLink="/search">Search</a></li>
-        <li><a routerLink="/profile">Profile</a></li>
-        <li><a routerLink="/about">About</a></li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Home</a></li>
+        <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+        <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
+        <li routerLinkActive="active"><a routerLink="/search">Search</a></li>
+        <li routerLinkActive="active"><a routerLink="/profile">Profile</a></li>
+        <li routerLinkActive="active"><a routerLink="/about">About</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse">
         <i class="material-icons">menu</i></a>
