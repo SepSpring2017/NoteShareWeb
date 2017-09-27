@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BaseRequestOptions } from '@angular/http';
+import { GravatarModule } from 'ng2-gravatar-directive';
 
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
@@ -37,7 +38,8 @@ import { UserService } from './_services/user.service';
     BrowserAnimationsModule,
     routes,
     FormsModule,
-    HttpModule
+    HttpModule,
+    GravatarModule
   ],
   providers: [
     AuthenticationService,
