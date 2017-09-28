@@ -20,6 +20,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthenticationService } from './_services/authentication.service';
 import { AuthGuard } from './_services/auth.guard';
 import { UserService } from './_services/user.service';
+import { SubjectService } from './_services/subject.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { UserService } from './_services/user.service';
     AuthenticationService,
     AuthGuard,
     BaseRequestOptions,
-    UserService
+    UserService,
+    SubjectService
   ],
   bootstrap: [AppComponent]
 })

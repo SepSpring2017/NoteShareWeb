@@ -4,21 +4,23 @@
     <div class="nav-wrapper container">
       <a id="logo-container" href="/" class="brand-logo">NoteShare</a>
       <ul class="right hide-on-med-and-down">
-        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Home</a></li>
-        <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
-        <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
-        <li routerLinkActive="active"><a routerLink="/search">Search</a></li>
-        <li routerLinkActive="active"><a routerLink="/profile">Profile</a></li>
-        <li routerLinkActive="active"><a routerLink="/about">About</a></li>
+        <li class="waves-effect waves-light" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Home</a></li>
+        <li class="waves-effect waves-light" *ngIf="!userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/login">Login</a></li>
+        <li class="waves-effect waves-light" *ngIf="!userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/register">Register</a></li>
+        <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()"><a (click)="logout($event)" href="#">Logout</a></li>
+        <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/search">Search</a></li>
+        <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/profile">Profile</a></li>
+        <li class="waves-effect waves-light" routerLinkActive="active"><a routerLink="/about">About</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav" style="transform: translateX(-100%);">
-        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Home</a></li>
-        <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
-        <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
-        <li routerLinkActive="active"><a routerLink="/search">Search</a></li>
-        <li routerLinkActive="active"><a routerLink="/profile">Profile</a></li>
-        <li routerLinkActive="active"><a routerLink="/about">About</a></li>
+        <li class="waves-effect waves-light" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Home</a></li>
+        <li class="waves-effect waves-light" *ngIf="!userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/login">Login</a></li>
+        <li class="waves-effect waves-light" *ngIf="!userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/register">Register</a></li>
+        <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()"><a (click)="logout($event)" href="#">Logout</a></li>
+        <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/search">Search</a></li>
+        <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/profile">Profile</a></li>
+        <li class="waves-effect waves-light" routerLinkActive="active"><a routerLink="/about">About</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse">
         <i class="material-icons">menu</i></a>

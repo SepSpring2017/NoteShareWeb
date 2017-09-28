@@ -32,6 +32,13 @@ export class UserService {
             
     }
 
+    isAuthenticated() {
+        let token = localStorage.getItem('token')
+        let expiry: Date = new Date(JSON.parse(localStorage.getItem('tokenExpiry')));
+        
+        return token && expiry > new Date(Date.now())
+    }
+
     // private helper methods
 
     private jwt() {
