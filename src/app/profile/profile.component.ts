@@ -40,6 +40,8 @@ export class ProfileComponent implements OnInit {
       this.subjects = JSON.parse(localStorage.getItem('allSubjects'));
     else
       this.subjectService.getAllSubjects().subscribe(res => this.subjects = res);
+    
+    this.selectedSubject = this.subjects[0];
   }
 
   ngOnInit() {
