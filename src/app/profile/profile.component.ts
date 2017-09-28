@@ -22,13 +22,17 @@ export class ProfileComponent implements OnInit {
 
   addSubject() {
     console.log(this.selectedSubject);
+    if (!this.user.subjects)
+      this.user.subjects = new Array<Subject>();
     this.user.subjects.push(this.selectedSubject);
-    console.log(this.user);
-    this.userService.update(this.user);
+    this.userService.addSubject(this.selectedSubject.subjectId).subscribe(res => console.log(res));
+
+    this.getCurrentUser();
   }
 
-  onChange(subject) {
-    console.log(subject);
+  onChange(e) {
+    console.log(e);
+    console.log(this.selectedSubject);
   }
 
   getCurrentUser() {

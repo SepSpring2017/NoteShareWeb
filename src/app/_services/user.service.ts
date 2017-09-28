@@ -13,7 +13,11 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put(environment.apiUrl + 'api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
+        return this.http.put(environment.apiUrl + 'api/users/current', user, this.jwt());
+    }
+
+    addSubject(subjectId: number) {
+        return this.http.put(environment.apiUrl + 'api/users/addsubject', subjectId, this.jwt());
     }
 
     getCurrentUser() {
@@ -35,7 +39,7 @@ export class UserService {
     isAuthenticated() {
         let token = localStorage.getItem('token')
         let expiry: Date = new Date(JSON.parse(localStorage.getItem('tokenExpiry')));
-        
+
         return token && expiry > new Date(Date.now())
     }
 
@@ -45,7 +49,7 @@ export class UserService {
         // create authorization header with jwt token
         let token = JSON.parse(localStorage.getItem('token'));
         if (token) {
-            let headers = new Headers({ 'Authorization': 'Bearer ' + token });
+            let headers = new Headers({ 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' });
             return new RequestOptions({ headers: headers });
         }
     }

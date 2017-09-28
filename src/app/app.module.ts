@@ -21,6 +21,8 @@ import { AuthenticationService } from './_services/authentication.service';
 import { AuthGuard } from './_services/auth.guard';
 import { UserService } from './_services/user.service';
 import { SubjectService } from './_services/subject.service';
+import { DocumentService } from './_services/document.service';
+import { NotesComponent } from './notes/notes.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { SubjectService } from './_services/subject.service';
     NoteComponent,
     AboutComponent,
     MainComponent,
-    RegisterComponent
+    RegisterComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { SubjectService } from './_services/subject.service';
     AuthGuard,
     BaseRequestOptions,
     UserService,
-    SubjectService
+    SubjectService,
+    DocumentService
   ],
   bootstrap: [AppComponent]
 })

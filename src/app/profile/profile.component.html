@@ -41,7 +41,6 @@
     <div class="row">
         <div class="input-field col s12">
           <select [(ngModel)]="selectedSubject" (ngModelChange)="onChange($event)">
-            <option value="" disabled selected>Choose your option</option>
             <option *ngFor="let subject of subjects" [ngValue]="subject" >{{ subject.name }}</option>
           </select>
           <label>Subject</label>
