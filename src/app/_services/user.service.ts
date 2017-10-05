@@ -65,7 +65,6 @@ export class User {
 export class Subject {
     subjectId: number;
     name: string;
-    documentCount: number;
 }
 
 export class Role {
