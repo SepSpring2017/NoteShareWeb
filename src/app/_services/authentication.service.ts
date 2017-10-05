@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response, RequestOptions } from '@angular/http';
+import { Http , Headers, Response, RequestOptions } from '@angular/http';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
  
@@ -7,7 +8,7 @@ import { environment } from '../../environments/environment';
  
 @Injectable()
 export class AuthenticationService {
-    constructor(private http: Http) { }
+    constructor(private http: Http, private router: Router) { }
  
     login(username: string, password: string) {
         let body = 'grant_type=password&username=' + username + '&password=' + password;
@@ -31,5 +32,6 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         localStorage.removeItem('token');
         localStorage.removeItem('tokenExpiry');
+        this.router.navigate(['/']);
     }
 }
