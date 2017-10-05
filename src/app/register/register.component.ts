@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service'
+import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
   selector: 'app-signin',
@@ -13,7 +14,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
       private router: Router,
-      private userService: UserService) { }
+      private userService: UserService,
+      private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
@@ -23,7 +25,9 @@ export class RegisterComponent implements OnInit {
     this.userService.create(this.model)
         .subscribe(
             data => {
-                this.router.navigate(['/']);
+                this.authenticationService.login(this.model.email, this.model.password).subscribe(res => {
+                    this.router.navigate(['/']);
+                });
             },
             error => {
                 this.loading = false;

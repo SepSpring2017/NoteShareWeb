@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { environment } from '../../environments/environment';
-import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class UserService {
-    constructor(private http: Http, private authenticationService: AuthenticationService) { }
+    constructor(private http: Http) { }
 
     create(user: User) {
         return this.http.post(environment.apiUrl + 'api/users', user, this.jwt())
-            .map((res: Response) => this.authenticationService.login(user.email, user.password));
+            .map((res: Response) => { return res.json(); });
     }
 
     update(user: User) {
