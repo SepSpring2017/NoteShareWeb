@@ -13,4 +13,9 @@ export class SubjectService {
                 return res.json();
             });
     }
+
+    getSubject(subjectId: string) {
+        return this.http.get(environment.apiUrl + 'api/Subjects/' + subjectId)
+            .map(res => { return res.json() });
+    }
 }
