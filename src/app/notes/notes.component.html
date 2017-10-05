@@ -2,18 +2,18 @@
   <div class="col s12 m8 offset-m2">
     <h2>
       All Notes
-      <button class="right btn-floating btn-large waves-effect waves-light red modal-trigger" data-target="addNoteModal">
+      <button class="right btn-floating btn-large waves-effect waves-light red" (click)="modal()" >
         <i class="material-icons">add</i>
       </button>
     </h2>
     <ul *ngIf="notes" class="collection">
       <li *ngFor="let note of notes" class="collection-item avatar">
         <i class="material-icons circle">note</i>
-        <span class="title">{{ note.documentName }} | {{ note.subject.name }}</span>
+        <span class="title">{{ note.documentName }}</span>
         <p>
-          First Line <br> Second Line
+          {{ note.subject.name }} <br> Second Line
         </p>
-        <a href="{{environment.apiUrl}}uploads/{{note.fileName}}" target="_blank" class="secondary-content"><i class="material-icons">get_app</i></a>
+        <a href="{{apiUrl}}uploads/{{note.fileName}}" target="_blank" class="secondary-content"><i class="material-icons">get_app</i></a>
       </li>
     </ul>
   </div>

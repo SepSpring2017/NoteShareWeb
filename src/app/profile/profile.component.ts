@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   selectedSubject: number;
 
   constructor(private userService: UserService, private subjectService: SubjectService) {
+    $('.modal').modal();
     this.getCurrentUser();
     //this.getSubjects();
   }
@@ -33,6 +34,11 @@ export class ProfileComponent implements OnInit {
        this.user = res.json();
        $('#addSubjectModal').modal('close'); 
       });
+  }
+
+  modal() {
+    $('.modal').modal();
+    $('#addSubjectModal').modal('open'); 
   }
 
   selected(e) {
