@@ -24,10 +24,29 @@
   <div class="modal-content">
     <h4>Add Note</h4>
     <div class="row">
-        <p>
-          TODO: add form
-        </p>
-    </div>
+      <div class="input-field col s6">
+        <input placeholder="Enter a title for your note" id="document_name" type="text" class="validate">
+        <label for="document_name">Title</label>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Enter the subject" id="subject" type="text" class="validate">
+          <label for="subject">Subject</label>
+        </div>
+      </div>
+        <div class="row">  
+          <form action="#">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>File</span>
+                <input type="file" accept=".pdf" >
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+          </form>
+      
   </div>
   <div class="modal-footer">
     <button class="modal-action modal-close waves-effect waves-red red left btn">Cancel</button>
