@@ -17,7 +17,7 @@ export class UserService {
     }
 
     addSubject(subjectId: number) {
-        return this.http.put(environment.apiUrl + 'api/users/addsubject', subjectId, this.jwt());
+        return this.http.put(environment.apiUrl + 'api/users/addsubject?subjectId=' + subjectId, null, this.jwt());
     }
 
     getCurrentUser() {
