@@ -14,6 +14,13 @@ export class DocumentService {
             return res.json();
         });
     }
+
+    upload(fileToUpload: any){
+        let input = new FormData();
+        input.append('file', fileToUpload);
+
+        return this.http.post(environment.apiUrl + 'api/uploadFile', input);
+    }
 }
 
 export class Document {
