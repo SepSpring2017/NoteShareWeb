@@ -26,7 +26,8 @@
         <i class="material-icons circle">note</i>
         <span class="title">{{ subject.subjectId }} | {{ subject.name }}</span>
         <p>
-          First Line <br> Second Line
+          {{ subject.documentCount }} note<span *ngIf="subject.documentCount != 1">s</span> for this subject.
+          <a *ngIf="subject.documentCount > 0" href="/notes?subject={{subject.subjectId}}">Browse</a>
         </p>
         <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
       </li>
