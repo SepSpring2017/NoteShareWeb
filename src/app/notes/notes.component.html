@@ -25,15 +25,42 @@
     <h4>Add Note</h4>
     <div class="row">
       <div class="input-field col s6">
-        <input placeholder="Enter a title for your note" id="document_name" type="text" class="validate">
-        <label for="document_name">Title</label>
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' data-activates='dropdownSubj'>Subjects</a>
+    
+        <!-- Dropdown Structure -->
+        <ul id='dropdownSubj' class='dropdown-content'>
+          <li>
+            <a>TODO</a>
+          </li>
+        </ul>
       </div>
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Enter the subject" id="subject" type="text" class="validate">
-          <label for="subject">Subject</label>
-        </div>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-button btn' data-activates='dropdownType'>Document Type</a>
+    
+        <!-- Dropdown Structure -->
+        <ul id='dropdownType' class='dropdown-content'>
+          <li>
+            <a>Quiz Answers</a>
+          </li>
+          <li>
+            <a>Lecture Notes</a>
+          </li>
+          <li>
+            <a>Misc</a>
+          </li>
+        </ul>
       </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input placeholder="Enter a name for your note" id="document_name" type="text" class="validate">
+        <label class="active" for="document_name">Document Name</label>
+      </div>
+    </div>
         <div class="row">  
           <form action="addFile()">
             <div class="file-field input-field">

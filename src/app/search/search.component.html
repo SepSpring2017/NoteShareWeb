@@ -4,41 +4,27 @@
     <div class="row">
       <div class="input-field col s6">
         <i class="material-icons prefix">search</i>
-        <input id="search" type="text" class="validate">
-        <label for="search">Search</label>
+        <input #searchNote id="search" type="text" class="validate">
+        <label for="search">Search Notes</label>
+        <button (click)="searchNote(search)" class="waves-effect waves-green teal btn">Search</button>
       </div>
     </div>
   </form>
 </div>
 
 <div class="row">
-  <div class="col s12 m5">
-    <div class="card blue-grey darken-1">
-      <div class="card-content white-text">
-        <span class="card-title">Subject</span>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam risus nunc, finibus et nunc in, vehicula faucibus mi. Morbi
-        aliquam interdum augue, a mollis ante ullamcorper ut. Sed ultrices consectetur nisl, eget sollicitudin augue scelerisque
-        eget. Suspendisse tristique justo magna, id venenatis ante eleifend nec. Ut fermentum interdum vulputate.</p>
-      </div>
-      <div class="card-action">
-        <a routerLink="/note">Full View</a>
-        <a href="#">Download</a>
-      </div>
+  <div class="col s6">
+    <ul *ngIf="notes" class="collection with-header">
+      <li class="collection-header">
+        <h4>Search Results</h4>
+      </li>
+      <li class="collection-item" *ngFor="let note of notes">
+        <div>{{note.documentName}}
+          <a (click)="selectNote()" class="secondary-content">
+            <i class="material-icons">description</i>
+          </a>
+        </div>
+      </li>
+    </ul>
     </div>
   </div>
-
-  <div class="col s12 m5">
-    <div class="card blue-grey darken-1">
-      <div class="card-content white-text">
-        <span class="card-title">Subject</span>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam risus nunc, finibus et nunc in, vehicula faucibus mi. Morbi
-        aliquam interdum augue, a mollis ante ullamcorper ut. Sed ultrices consectetur nisl, eget sollicitudin augue scelerisque
-        eget. Suspendisse tristique justo magna, id venenatis ante eleifend nec. Ut fermentum interdum vulputate.</p>
-      </div>
-      <div class="card-action">
-        <a routerLink="/note"></a>
-        <a href="#">Download</a>
-      </div>
-    </div>
-  </div>
-</div>

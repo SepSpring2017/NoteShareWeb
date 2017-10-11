@@ -21,6 +21,11 @@ export class DocumentService {
 
         return this.http.post(environment.apiUrl + 'api/uploadFile', input);
     }
+
+    getDocument(documentName: string) {
+        return this.http.get(environment.apiUrl + 'api/Documents/' + documentName)
+            .map(res => { return res.json() });
+    }
 }
 
 export class Document {

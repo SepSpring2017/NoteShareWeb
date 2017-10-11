@@ -26,11 +26,14 @@ export class NotesComponent implements OnInit {
     private subjectService: SubjectService) {
     this.getAllNotes();
   }
-  
+
   modal() {
     $('.modal').modal();
-    $('#addNoteModal').modal('open'); 
+    $('#addNoteModal').modal('open');
+    $('.dropdown-button').dropdown('open');
   }
+
+
 
   getAllNotes() {
     this.documentService.getAllDocuments().subscribe(res => this.notes = res);
@@ -40,7 +43,7 @@ export class NotesComponent implements OnInit {
     let fi = this.fileInput.nativeElement;
     if (fi.files && fi.files[0]) {
       let fileToUpload = fi.files[0];
-      this.documentService.upload(fileToUpload).subscribe(res => {console.log(res);});
+      this.documentService.upload(fileToUpload).subscribe(res => {console.log(res); });
     }
   }
 
