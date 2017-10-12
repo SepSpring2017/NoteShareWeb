@@ -41,9 +41,12 @@
     <div class="modal-content">
       <h4>Add Subject</h4>
       <div class="row">
-        <div class="input-field col s12">
-          <input type="text" [ngModel]="selectedSubject" (ngModelChange)="selected($event)" name="selectedSubject" id="subject" required />
+        <div *ngIf="subjects" class="col s12">
           <label for="subject">Subject</label>
+          <select class="browser-default" name="subject" id="subject" [(ngModel)]="selectedSubject" (ngModelChange)="selected($event)" >
+            <option value="" disabled>Choose a subject</option>
+            <option *ngFor="let subject of subjects" [ngValue]="subject">{{ subject.name }} - {{ subject.subjectId }}</option>
+          </select>
         </div>
       </div>
     </div>

@@ -17,22 +17,22 @@ export class ProfileComponent implements OnInit {
 
   user: User;
   subjects: Subject[];
-  selectedSubject: number;
+  selectedSubject: Subject;
   documents: Document[];
 
   constructor(private userService: UserService, private subjectService: SubjectService) {
-    $('.modal').modal();
     this.getCurrentUser();
+    this.getSubjects();
+    this.selectedSubject = this.subjects[0];
   }
 
   addSubject() {
-    console.log(this.selectedSubject);
     if (!this.user.subjects)
       this.user.subjects = new Array<Subject>();
-    this.userService.addSubject(this.selectedSubject).subscribe(
+    this.userService.addSubject(this.selectedSubject.subjectId).subscribe(
       res => {
         this.user = res.json();
-        this.selectedSubject = null;
+        this.selectedSubject = this.subjects[0];
         $('#addSubjectModal').modal('close'); 
       });
   }
