@@ -42,6 +42,10 @@ export class ProfileComponent implements OnInit {
     $('#addSubjectModal').modal('open'); 
   }
 
+  selected(e) {
+    this.selectedSubject = e;
+  }
+
   getCurrentUser() {
     this.userService.getCurrentUser().subscribe(res => this.user = res);
   }
