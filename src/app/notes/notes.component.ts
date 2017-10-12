@@ -39,9 +39,7 @@ export class NotesComponent implements OnInit {
   }
 
   addNote() {
-    console.log(this.model);
     this.documentService.upload(this.model).subscribe((res: Response) => {
-      console.log(res);
       this.getAllNotes();
       $('#addNoteModal').modal('close'); 
     });
