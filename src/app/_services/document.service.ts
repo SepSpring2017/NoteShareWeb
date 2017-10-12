@@ -30,8 +30,13 @@ export class DocumentService {
     }
 
     searchDocuments(query: string) {
-        return this.http.get(environment.apiUrl + 'api/Documents/search' + query)
+        return this.http.get(environment.apiUrl + 'api/Documents/search?query=' + query)
             .map(res => { return res.json() });
+    }
+
+    searchBySubject(query: string, subject: string) {
+        return this.http.get(environment.apiUrl + 'api/Documents/searchsubject?query=' + query + '&subject=' + subject)
+        .map(res => { return res.json() });
     }
 }
 

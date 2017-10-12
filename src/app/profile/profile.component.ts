@@ -30,9 +30,9 @@ export class ProfileComponent implements OnInit {
       this.user.subjects = new Array<Subject>();
     this.userService.addSubject(this.selectedSubject).subscribe(
       res => {
-       console.log(res);
-       this.user = res.json();
-       $('#addSubjectModal').modal('close'); 
+        this.user = res.json();
+        this.selectedSubject = null;
+        $('#addSubjectModal').modal('close'); 
       });
   }
 

@@ -26,14 +26,13 @@ export class NotesComponent implements OnInit {
     private documentService: DocumentService,
     private activatedRoute: ActivatedRoute,
     private subjectService: SubjectService) {
-    this.getAllNotes();
   }
 
   modal() {
     $('.modal').modal();
     $('#addNoteModal').modal('open');
   }
-  
+
   getAllNotes() {
     this.documentService.getAllDocuments().subscribe(res => this.notes = res);
   }
@@ -44,6 +43,10 @@ export class NotesComponent implements OnInit {
       this.model = new UploadModel;
       $('#addNoteModal').modal('close'); 
     });
+  }
+
+  searchSubject() {
+    this.documentService.searchBySubject("", this.currentSubjectName).subscribe(res => this.notes = res);
   }
 
   onChange(event: EventTarget) {
@@ -57,10 +60,11 @@ export class NotesComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       let subjectId = params['subject'];
       if (subjectId) {
-        this.subjectService.getSubject(subjectId).subscribe(res => { this.currentSubject = res, this.currentSubjectName = res.name });
+        this.subjectService.getSubject(subjectId).subscribe(res => { this.currentSubject = res, this.currentSubjectName = res.name, this.searchSubject() });
       }
       else {
         this.currentSubjectName = "All"
+        this.getAllNotes();
       }
     });
   }
