@@ -2,7 +2,7 @@
   <div class="row">
     <form class="col s12 offset-m2 m8" (ngSubmit)="f.form.valid && register()" #f="ngForm">
       <div class="row">
-        <div class="input-field col s4 m8 offset-s4 offset-m2">
+        <div class="input-field col s12 m8 offset-m2">
           <input id="email" type="email" class="validate" name="email" [(ngModel)]="model.email" minlength="12"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" 
           #email="ngModel" #username="ngModel" required>
           <div [hidden]="email.valid || email.pristine"
@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s4 m8 offset-s4 offset-m2">
+        <div class="input-field col s12 m8 offset-m2">
           <input id="password" type="password" class="validate" name="password" [(ngModel)]="model.password" minlength="8" #password="ngModel" required>
           <label for="password">Password</label>
           <div [hidden]="password.valid || password.pristine"
@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col s4 m8 offset-s4 offset-m2">
+        <div class="col s12 m8 offset-m2">
           <button [disabled]="!f.form.valid" class="waves-effect waves-light btn" type="submit">Register</button>
         </div>
       </div>
