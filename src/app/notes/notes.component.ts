@@ -33,9 +33,7 @@ export class NotesComponent implements OnInit {
     $('.modal').modal();
     $('#addNoteModal').modal('open');
   }
-
-
-
+  
   getAllNotes() {
     this.documentService.getAllDocuments().subscribe(res => this.notes = res);
   }
@@ -43,6 +41,7 @@ export class NotesComponent implements OnInit {
   addNote() {
     this.documentService.upload(this.model).subscribe((res: Response) => {
       this.getAllNotes();
+      this.model = new UploadModel;
       $('#addNoteModal').modal('close'); 
     });
   }
