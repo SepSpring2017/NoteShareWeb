@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params} from '@angular/router';
-import { DocumentService, Document } from '../_services/document.service';
+import { DocumentService, Document, UploadModel } from '../_services/document.service';
 import { environment } from '../../environments/environment';
 import { Subject } from '../_services/user.service';
 import { SubjectService } from '../_services/subject.service';
@@ -20,6 +20,8 @@ export class NotesComponent implements OnInit {
   currentSubjectName: string;
   currentSubject: Subject;
 
+  model: UploadModel = new UploadModel;
+
   constructor(
     private documentService: DocumentService,
     private activatedRoute: ActivatedRoute,
@@ -36,12 +38,21 @@ export class NotesComponent implements OnInit {
     this.documentService.getAllDocuments().subscribe(res => this.notes = res);
   }
 
-  addFile(): void {
-    let fi = this.fileInput.nativeElement;
-    if (fi.files && fi.files[0]) {
-      let fileToUpload = fi.files[0];
-      this.documentService.upload(fileToUpload).subscribe(res => {console.log(res);});
+  addNote() {
+    console.log(this.model);
+    this.documentService.upload(this.model).subscribe((res: Response) => {
+      console.log(res);
+      this.getAllNotes();
+      $('#addNoteModal').modal('close'); 
+    });
+  }
+
+  onChange(event: EventTarget) {
+    let fileBrowser = this.fileInput.nativeElement;
+    if (fileBrowser.files && fileBrowser.files[0]) {
+      this.model.file = fileBrowser.files[0];
     }
+    console.log(this.model.file);
   }
 
   ngOnInit() {

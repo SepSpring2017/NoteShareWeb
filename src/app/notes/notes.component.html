@@ -21,35 +21,38 @@
 
 <!-- Modal Structure -->
 <div id="addNoteModal" class="modal">
-  <div class="modal-content">
-    <h4>Add Note</h4>
-    <div class="row">
-      <div class="input-field col s6">
-        <input placeholder="Enter a title for your note" id="document_name" type="text" class="validate">
-        <label for="document_name">Title</label>
-      </div>
+  <form #f="ngForm" (ngSubmit)="addNote()">
+    <div class="modal-content">
+      <h4>Add Note</h4>
       <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Enter the subject" id="subject" type="text" class="validate">
-          <label for="subject">Subject</label>
+        <div class="input-field col s12 m6">
+          <input type="text" name="documentName" [(ngModel)]="model.documentName" id="documentName" required />
+          <label for="documentName">Document Name</label>
         </div>
-      </div>
-        <div class="row">  
-          <form action="addFile()">
+        <div class="input-field col s12 m6">
+          <input type="text" name="documentType" [(ngModel)]="model.documentType" id="documentType" required />
+          <label for="documentType">Document Type</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input type="text" name="subjectId" [(ngModel)]="model.subjectId" id="subjectId" required />
+          <label for="subjectId">Subject Id</label>
+        </div>
+        <div class="input-field col s12 m6">
             <div class="file-field input-field">
               <div class="btn">
                 <span>File</span>
-                <input #fileInput type="file" accept=".pdf" >
+                <input type="file" name="documentFile" id="documentFile" #fileInput (change)="onChange($event)" required />
               </div>
               <div class="file-path-wrapper">
                 <input class="file-path validate" type="text">
               </div>
             </div>
-          </form>
-      
-  </div>
-  <div class="modal-footer">
-    <button class="modal-action modal-close waves-effect waves-red red left btn">Cancel</button>
-    <button class="waves-effect waves-green teal btn">Add Note</button>
-  </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-action modal-close waves-effect waves-red red left btn">Cancel</button>
+      <button [disabled]="!f.form.valid" class="waves-effect waves-green teal btn" type="submit">Add Note</button>
+    </div>
+  </form>
 </div>

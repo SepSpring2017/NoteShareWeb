@@ -42,9 +42,9 @@ export class UserService {
         return token && expiry > new Date(Date.now())
     }
 
-    // private helper methods
+    // helper method
 
-    private jwt() {
+    jwt() {
         // create authorization header with jwt token
         let token = JSON.parse(localStorage.getItem('token'));
         if (token) {
