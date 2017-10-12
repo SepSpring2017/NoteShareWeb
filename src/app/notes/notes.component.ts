@@ -28,11 +28,13 @@ export class NotesComponent implements OnInit {
     private subjectService: SubjectService) {
     this.getAllNotes();
   }
-  
+
   modal() {
     $('.modal').modal();
-    $('#addNoteModal').modal('open'); 
+    $('#addNoteModal').modal('open');
   }
+
+
 
   getAllNotes() {
     this.documentService.getAllDocuments().subscribe(res => this.notes = res);
@@ -50,7 +52,6 @@ export class NotesComponent implements OnInit {
     if (fileBrowser.files && fileBrowser.files[0]) {
       this.model.file = fileBrowser.files[0];
     }
-    console.log(this.model.file);
   }
 
   ngOnInit() {

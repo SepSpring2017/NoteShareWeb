@@ -28,6 +28,11 @@ export class DocumentService {
                 return res.json();
             });
     }
+
+    searchDocuments(query: string) {
+        return this.http.get(environment.apiUrl + 'api/Documents/search' + query)
+            .map(res => { return res.json() });
+    }
 }
 
 export class Document {
