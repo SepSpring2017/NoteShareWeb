@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GravatarModule } from 'ng2-gravatar-directive';
 import { UserService, User, Subject } from '../_services/user.service';
 import { SubjectService } from '../_services/subject.service';
+import { Document } from '../_services/document.service';
 
 declare var jquery:any;
 declare var $ :any;
@@ -17,11 +18,11 @@ export class ProfileComponent implements OnInit {
   user: User;
   subjects: Subject[];
   selectedSubject: number;
+  documents: Document[];
 
   constructor(private userService: UserService, private subjectService: SubjectService) {
     $('.modal').modal();
     this.getCurrentUser();
-    //this.getSubjects();
   }
 
   addSubject() {
@@ -39,10 +40,6 @@ export class ProfileComponent implements OnInit {
   modal() {
     $('.modal').modal();
     $('#addSubjectModal').modal('open'); 
-  }
-
-  selected(e) {
-    this.selectedSubject = e;
   }
 
   getCurrentUser() {
