@@ -9,7 +9,6 @@
         <li class="waves-effect waves-light" *ngIf="!userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/register">Register</a></li>
         <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()"><a (click)="logout($event)" href="#">Logout</a></li>
         <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/notes">Notes</a></li>
-        <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/search">Search</a></li>
         <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/profile">Profile</a></li>
         <li class="waves-effect waves-light" routerLinkActive="active"><a routerLink="/about">About</a></li>
       </ul>
@@ -20,7 +19,6 @@
         <li class="waves-effect waves-light" *ngIf="!userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/register">Register</a></li>
         <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()"><a (click)="logout($event)" href="#">Logout</a></li>
         <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/notes">Notes</a></li>
-        <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/search">Search</a></li>
         <li class="waves-effect waves-light" *ngIf="userService.isAuthenticated()" routerLinkActive="active"><a routerLink="/profile">Profile</a></li>
         <li class="waves-effect waves-light" routerLinkActive="active"><a routerLink="/about">About</a></li>
       </ul>

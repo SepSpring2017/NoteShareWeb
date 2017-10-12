@@ -13,8 +13,6 @@ import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
-import { SearchComponent } from './search/search.component';
-import { NoteComponent } from './note/note.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthenticationService } from './_services/authentication.service';
@@ -30,8 +28,6 @@ import { NotesComponent } from './notes/notes.component';
     HeaderComponent,
     LoginComponent,
     ProfileComponent,
-    SearchComponent,
-    NoteComponent,
     AboutComponent,
     MainComponent,
     RegisterComponent,
