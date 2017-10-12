@@ -47,11 +47,18 @@ export class NotesComponent implements OnInit {
   }
 
   search() {
-    this.documentService.searchDocuments(this.searchQuery).subscribe(res => this.notes = res);
+    if (!this.searchQuery)
+      this.searchQuery = "";
+    if (this.currentSubjectName && this.currentSubjectName != "All")
+      this.searchBySubject();
+    else
+      this.documentService.searchDocuments(this.searchQuery).subscribe(res => this.notes = res);
   }
 
-  searchSubject() {
-    this.documentService.searchBySubject("", this.currentSubjectName).subscribe(res => this.notes = res);
+  searchBySubject() {
+    if (!this.searchQuery)
+      this.searchQuery = "";
+    this.documentService.searchBySubject(this.searchQuery, this.currentSubjectName).subscribe(res => this.notes = res);
   }
 
   onChange(event: EventTarget) {
@@ -65,7 +72,7 @@ export class NotesComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       let subjectId = params['subject'];
       if (subjectId) {
-        this.subjectService.getSubject(subjectId).subscribe(res => { this.currentSubject = res, this.currentSubjectName = res.name, this.searchSubject() });
+        this.subjectService.getSubject(subjectId).subscribe(res => { this.currentSubject = res, this.currentSubjectName = res.name, this.searchBySubject() });
       }
       else {
         this.currentSubjectName = "All"
