@@ -19,6 +19,7 @@ export class NotesComponent implements OnInit {
   apiUrl: string = environment.apiUrl;
   currentSubjectName: string;
   currentSubject: Subject;
+  searchQuery: string;
 
   model: UploadModel = new UploadModel;
 
@@ -43,6 +44,10 @@ export class NotesComponent implements OnInit {
       this.model = new UploadModel;
       $('#addNoteModal').modal('close'); 
     });
+  }
+
+  search() {
+    this.documentService.searchDocuments(this.searchQuery).subscribe(res => this.notes = res);
   }
 
   searchSubject() {

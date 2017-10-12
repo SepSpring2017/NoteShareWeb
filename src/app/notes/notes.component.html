@@ -2,10 +2,26 @@
   <div class="col s12 m8 offset-m2">
     <h2>
       {{ currentSubjectName }} Notes
-      <button class="right btn-floating btn-large waves-effect waves-light red" (click)="modal()" >
-        <i class="material-icons">add</i>
-      </button>
     </h2>
+    <div class="row">
+      <form #f="ngForm" (ngSubmit)="search()">
+          <div class="input-field col s10">
+            <i class="material-icons prefix">search</i>
+            <input id="searchQuery" name="searchQuery" type="search" [(ngModel)]="searchQuery" class="validate">
+            <label for="searchQuery">Search</label>
+          </div>
+      </form>
+      <div class="col s2">
+        <button class="right btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top" data-tooltip="Add your notes" (click)="modal()" >
+          <i class="material-icons">add</i>
+        </button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m8 offset-m2">
     <ul *ngIf="notes" class="collection">
       <li *ngFor="let note of notes" class="collection-item avatar">
         <i class="material-icons circle">note</i>
