@@ -3,14 +3,22 @@
     <form class="col s12 offset-m2 m8" (ngSubmit)="f.form.valid && login()" #f="ngForm">
       <div class="row">
         <div class="input-field col s12 m8 offset-m2">
-          <input id="email" type="email" class="validate" name="username" [(ngModel)]="model.username" #username="ngModel" required>
+          <input id="email" type="email" class="validate" name="username" [(ngModel)]="model.username" minlength="8"pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  #username="ngModel" required>
           <label for="email">Email</label>
+          <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+              <div [hidden]="!username.hasError('required')">Email required</div>
+              <div [hidden]="!username.hasError('pattern')">Invalid Email Format</div>
+              </div>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12 m8 offset-m2">
-          <input id="password" type="password" class="validate" name="password" [(ngModel)]="model.password" #password="ngModel" required>
+          <input id="password" type="password" class="validate" name="password" [(ngModel)]="model.password" minlength="8" #password="ngModel" required>
           <label for="password">Password</label>
+          <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+              <div [hidden]="!password.hasError('required')">Password required</div>
+              <div [hidden]="!password.hasError('minlength')">Password must be at least 8 characters</div>
+            </div>
         </div>
       </div>
       <div class="row">
