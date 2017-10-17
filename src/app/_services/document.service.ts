@@ -8,7 +8,7 @@ export class DocumentService {
     constructor(private http: Http, private userService: UserService) { }
 
     getAllDocuments() {
-        return this.http.get(environment.apiUrl + 'api/Documents')
+        return this.http.get(environment.apiUrl + 'api/Documents', this.userService.jwt())
             .map((res: Response) => {
                 localStorage.setItem('allDocuments', JSON.stringify(res.json()));
                 return res.json();
@@ -30,12 +30,12 @@ export class DocumentService {
     }
 
     searchDocuments(query: string) {
-        return this.http.get(environment.apiUrl + 'api/Documents/search?query=' + query)
+        return this.http.get(environment.apiUrl + 'api/Documents/search?query=' + query, this.userService.jwt())
             .map(res => { return res.json() });
     }
 
     searchBySubject(query: string, subject: string) {
-        return this.http.get(environment.apiUrl + 'api/Documents/searchsubject?query=' + query + '&subject=' + subject)
+        return this.http.get(environment.apiUrl + 'api/Documents/searchsubject?query=' + query + '&subject=' + subject, this.userService.jwt())
         .map(res => { return res.json() });
     }
 }

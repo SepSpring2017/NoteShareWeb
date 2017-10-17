@@ -49,9 +49,12 @@
           <input type="text" name="documentType" [(ngModel)]="model.documentType" id="documentType" required />
           <label for="documentType">Document Type</label>
         </div>
-        <div class="input-field col s12 m6">
-          <input type="text" name="subjectId" [(ngModel)]="model.subjectId" id="subjectId" required />
-          <label for="subjectId">Subject Id</label>
+        <div *ngIf="mySubjects" class="col s12 m6">
+          <label for="subject">Subject</label>
+          <select class="browser-default" name="subject" id="subject" [(ngModel)]="selectedSubject" (ngModelChange)="selected($event)" >
+            <option value="" disabled>Choose a subject</option>
+            <option *ngFor="let subject of mySubjects" [ngValue]="subject">{{ subject.name }} - {{ subject.subjectId }}</option>
+          </select>
         </div>
         <div class="input-field col s12 m6">
             <div class="file-field input-field">

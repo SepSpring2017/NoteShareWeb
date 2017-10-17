@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 import { DocumentService, Document, UploadModel } from '../_services/document.service';
 import { environment } from '../../environments/environment';
-import { Subject } from '../_services/user.service';
+import { Subject, User, UserService } from '../_services/user.service';
 import { SubjectService } from '../_services/subject.service';
 
 declare var jquery:any;
@@ -20,16 +20,19 @@ export class NotesComponent implements OnInit {
   currentSubjectName: string;
   currentSubject: Subject;
   searchQuery: string;
+  mySubjects: Subject[];
 
   model: UploadModel = new UploadModel;
 
   constructor(
     private documentService: DocumentService,
     private activatedRoute: ActivatedRoute,
-    private subjectService: SubjectService) {
+    private subjectService: SubjectService,
+    private userService: UserService) {
   }
 
   modal() {
+    this.getMySubjects();
     $('.modal').modal();
     $('#addNoteModal').modal('open');
   }
@@ -44,6 +47,10 @@ export class NotesComponent implements OnInit {
       this.model = new UploadModel;
       $('#addNoteModal').modal('close'); 
     });
+  }
+
+  selected(e) {
+    this.model.subjectId = e.subjectId;
   }
 
   search() {
@@ -66,6 +73,10 @@ export class NotesComponent implements OnInit {
     if (fileBrowser.files && fileBrowser.files[0]) {
       this.model.file = fileBrowser.files[0];
     }
+  }
+
+  getMySubjects() {
+    this.userService.getCurrentUser().subscribe(res => { this.mySubjects = res.subjects});
   }
 
   ngOnInit() {
