@@ -15,7 +15,7 @@ export class DocumentService {
             });
     }
 
-    upload(model: UploadModel){
+    upload(model: UploadModel) {
         const formData = new FormData();
         formData.append("file", model.file);
         formData.append("documentName", model.documentName);
@@ -27,6 +27,11 @@ export class DocumentService {
             .map((res: Response) => {
                 return res.json();
             });
+    }
+
+    deleteDocument(id) {
+        return this.http.delete(environment.apiUrl + 'api/Documents/' + id, this.userService.jwt())
+            .map(res => { return res.json });
     }
 
     searchDocuments(query: string) {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { environment } from '../../environments/environment';
+import { Document } from './document.service';
 
 @Injectable()
 export class UserService {
@@ -24,10 +25,13 @@ export class UserService {
         return this.http.get(environment.apiUrl + 'api/users/current', this.jwt())
             .map((response: Response) =>
             {
-                user.id = response.json().id;
-                user.email = response.json().email;
-                user.subjects = response.json().subjects;
-                user.roles = response.json().roles;
+                let res = response.json();
+                user.id = res.id;
+                user.email = res.email;
+                user.subjects = res.subjects;
+                user.roles = res.roles;
+                user.bookmarks = res.bookmarks;
+                user.notes = res.notes;
 
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 return user;
@@ -60,6 +64,8 @@ export class User {
     password: string;
     subjects: Subject[];
     roles: Role[];
+    bookmarks: Document[];
+    notes: Document[];
 }
 
 export class Subject {

@@ -1,58 +1,76 @@
-<div class="col s12 m8 offset-m2 l6 offset-l3">
-  <div class="card-panel grey lighten-5 z-depth-1">
-    <div class="row valign-wrapper">
-      <div class="col s2">
-        <img *ngIf="user && user.email" gravatar [email]="user.email" [size]="200" class="circle responsive-img">
-      </div>
-      <div class="col s10">
-        <span class="black-text">
-              <p>  Lorem ipsum 
-              </p></span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col s12 m8 offset-m2">
-    <h2>
-      Your Subjects
-      <button class="right btn-floating btn-large waves-effect waves-light red" (click)="modal()">
-        <i class="material-icons">add</i>
-      </button>
-    </h2>
-    <ul *ngIf="user && user.subjects" class="collection">
-      <li *ngFor="let subject of user.subjects" class="collection-item avatar">
-        <i class="material-icons circle">note</i>
-        <span class="title">{{ subject.subjectId }} | {{ subject.name }}</span>
-        <p>
-          {{ subject.documentCount }} note<span *ngIf="subject.documentCount != 1">s</span> for this subject.
-          <a *ngIf="subject.documentCount > 0" routerLink="/notes" [queryParams]="{ subject: subject.subjectId }">Browse</a>
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<!-- Modal Structure -->
-<div id="addSubjectModal" class="modal">
-  <form #f="ngForm" (ngSubmit)="f.form.valid && addSubject()">
-    <div class="modal-content">
-      <h4>Add Subject</h4>
-      <div class="row">
-        <div *ngIf="subjects" class="col s12">
-          <label for="subject">Subject</label>
-          <select class="browser-default" name="subject" id="subject" [(ngModel)]="selectedSubject" (ngModelChange)="selected($event)" >
-            <option value="" disabled>Choose a subject</option>
-            <option *ngFor="let subject of subjects" [ngValue]="subject">{{ subject.name }} - {{ subject.subjectId }}</option>
-          </select>
+<div class="container">
+    <div class="col s12 m8 offset-m2 l6 offset-l3">
+        <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img *ngIf="user && user.email" gravatar [email]="user.email" [size]="200" class="circle responsive-img">
+            </div>
+            <div class="col s10">
+              <h2>
+                Your Profile
+              </h2>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="modal-footer">
-      <button class="modal-action modal-close waves-effect waves-red red left btn">Cancel</button>
-      <button class="waves-effect waves-green teal btn" type="submit">Add Subject</button>
-    </div>
-  </form>
+      
+      <div class="row">
+        <div class="col s12 m6">
+          <h2>
+            Your Subjects
+            <button class="right btn-floating btn-large waves-effect waves-light red" (click)="modal()">
+              <i class="material-icons">add</i>
+            </button>
+          </h2>
+          <ul *ngIf="user && user.subjects" class="collection">
+            <li *ngFor="let subject of user.subjects" class="collection-item avatar">
+              <i class="material-icons circle">note</i>
+              <span class="title">{{ subject.subjectId }} | {{ subject.name }}</span>
+              <p>
+                {{ subject.documentCount }} note<span *ngIf="subject.documentCount != 1">s</span> for this subject.
+                <a *ngIf="subject.documentCount > 0" routerLink="/notes" [queryParams]="{ subject: subject.subjectId }">Browse</a>
+              </p>
+              <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="col s12 m6">
+          <h2>Your Notes</h2>
+          <ul *ngIf="user && user.notes" class="collection">
+            <li *ngFor="let note of user.notes" class="collection-item avatar">
+              <i class="material-icons circle">note</i>
+              <span class="title">{{ note.documentName }}</span>
+              <p>
+                {{ note.subject.subjectId }} | {{ note.subject.name }} <br> {{ note.documentType }}
+              </p>
+              <span class="secondary-content">
+                <a href="{{apiUrl}}uploads/{{note.fileName}}" target="_blank"><i class="material-icons">get_app</i></a>
+                <a (click)="deleteNote(note)"><i class="material-icons">delete</i></a>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Modal Structure -->
+      <div id="addSubjectModal" class="modal">
+        <form #f="ngForm" (ngSubmit)="f.form.valid && addSubject()">
+          <div class="modal-content">
+            <h4>Add Subject</h4>
+            <div class="row">
+              <div *ngIf="subjects" class="col s12">
+                <label for="subject">Subject</label>
+                <select class="browser-default" name="subject" id="subject" [(ngModel)]="selectedSubject" (ngModelChange)="selected($event)" >
+                  <option value="" disabled>Choose a subject</option>
+                  <option *ngFor="let subject of subjects" [ngValue]="subject">{{ subject.name }} - {{ subject.subjectId }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="modal-action modal-close waves-effect waves-red red left btn">Cancel</button>
+            <button class="waves-effect waves-green teal btn" type="submit">Add Subject</button>
+          </div>
+        </form>
+      </div>
 </div>
