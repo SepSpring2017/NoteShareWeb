@@ -21,6 +21,7 @@ export class NotesComponent implements OnInit {
   currentSubject: Subject;
   searchQuery: string;
   mySubjects: Subject[];
+  subjectsWithNotes: Subject[];
 
   model: UploadModel = new UploadModel;
 
@@ -28,7 +29,8 @@ export class NotesComponent implements OnInit {
     private documentService: DocumentService,
     private activatedRoute: ActivatedRoute,
     private subjectService: SubjectService,
-    private userService: UserService) {
+    private userService: UserService,
+    private router: Router) {
   }
 
   modal() {
@@ -43,10 +45,14 @@ export class NotesComponent implements OnInit {
 
   addNote() {
     this.documentService.upload(this.model).subscribe((res: Response) => {
-      this.getAllNotes();
+      this.getNotes();
       this.model = new UploadModel;
       $('#addNoteModal').modal('close'); 
     });
+  }
+
+  subject(e) {
+    this.router.navigateByUrl('/notes?subject=' + e.subjectId);
   }
 
   selected(e) {
@@ -65,7 +71,7 @@ export class NotesComponent implements OnInit {
   searchBySubject() {
     if (!this.searchQuery)
       this.searchQuery = "";
-    this.documentService.searchBySubject(this.searchQuery, this.currentSubjectName).subscribe(res => this.notes = res);
+    this.documentService.searchBySubject(this.searchQuery, this.currentSubject.subjectId.toString()).subscribe(res => this.notes = res);
   }
 
   onChange(event: EventTarget) {
@@ -75,11 +81,15 @@ export class NotesComponent implements OnInit {
     }
   }
 
+  getSubjectsWithNotes() {
+    this.subjectService.getSubjectsWithNotes().subscribe(res => { this.subjectsWithNotes = res });
+  }
+
   getMySubjects() {
     this.userService.getCurrentUser().subscribe(res => { this.mySubjects = res.subjects});
   }
 
-  ngOnInit() {
+  getNotes() {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       let subjectId = params['subject'];
       if (subjectId) {
@@ -90,6 +100,11 @@ export class NotesComponent implements OnInit {
         this.getAllNotes();
       }
     });
+  }
+
+  ngOnInit() {
+    this.getSubjectsWithNotes();
+    this.getNotes();
   }
 
 }

@@ -17,7 +17,17 @@
         </button>
       </div>
     </div>
-    
+    <div class="row">
+      <form #f="ngForm">
+        <div *ngIf="subjectsWithNotes" class="col s12 m6">
+          <label for="subjectFilter">Filter by subject</label>
+          <select class="browser-default" name="subjectFilter" id="subjectFilter" [ngModel]="currentSubject" (ngModelChange)="subject($event)" >
+            <option value="" disabled>Choose a subject</option>
+            <option *ngFor="let subject of subjectsWithNotes" [ngValue]="subject">{{ subject.name }} - {{ subject.subjectId }}</option>
+          </select>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 <div class="row">
