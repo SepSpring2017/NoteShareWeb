@@ -54,10 +54,6 @@
         <div class="input-field col s12 m6">
           <input type="text" name="documentName" [(ngModel)]="model.documentName" id="documentName" required />
           <label for="documentName">Document Name</label>
-          <div [hidden]="documentName.valid || documentName.pristine"
-          class="alert alert-danger">
-          <div [hidden]="!documentName.hasError('required')">Document Name Required</div>
-          </div>
         </div>
         <div class="input-field col s12 m6">
           <input type="text" name="documentType" [(ngModel)]="model.documentType" id="documentType" required />
